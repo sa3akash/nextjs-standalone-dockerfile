@@ -209,5 +209,5 @@ export async function GET() {
  }
  }
  ]
-  return Response.json({ message: "get users successfully",data });
+  return Response.json({ message: "get users successfully",data },{ status: 200 });
 }

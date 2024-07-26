@@ -305,5 +305,5 @@ export async function GET() {
       body: "sunt dolores aut doloribus\ndolore doloribus voluptates tempora et\ndoloremque et quo\ncum asperiores sit consectetur dolorem",
     },
   ];
-  return Response.json({ message: "get post successfully", data });
+  return Response.json({ message: "get post successfully", data },{ status: 200 });
 }
