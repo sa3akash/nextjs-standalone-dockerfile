@@ -9,7 +9,11 @@ export default function Home() {
 
   useEffect(()=>{
     startTransition(async()=>{
-      const res = await fetch('/api/users')
+      const res = await fetch(`https://jsonplaceholder.typicode.com/users?_start=1&_limit=10`, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
       const dataUser = await res.json()
       setUsers(dataUser)
     })
