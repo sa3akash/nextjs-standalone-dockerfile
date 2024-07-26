@@ -1,21 +1,37 @@
-FROM node:20-alpine AS deps
+FROM node:20-alpine AS base
+FROM base AS deps
+
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
 
 COPY package*.json ./
-
+# RUN npm ci
 RUN npm install
 
-FROM node:20-alpine AS builder
 
+FROM node:20-alpine AS builder
+WORKDIR /app
+
+COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY --from=deps /node_modules ./node_modules
+
 RUN npm run build
 
-FROM node:20-alpine AS runner
+FROM base AS runner
+WORKDIR /app
 
-COPY --from=builder /.next/standalone ./
-# COPY --from=builder /public ./public
-# COPY --from=builder /.next/static ./.next/static
+ENV NODE_ENV production
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
 
+COPY --from=builder /app/public ./public
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+
+USER nextjs
 EXPOSE 3001
 
 ENV PORT 3001
