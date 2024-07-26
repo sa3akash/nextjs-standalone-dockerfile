@@ -9,7 +9,12 @@ export default function Home() {
 
   useEffect(()=>{
     startTransition(async()=>{
-      const res = await fetch(`/api/users`)
+      const res = await fetch(`/api/users`,{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
       const dataUser = await res.json()
       setUsers(dataUser)
     })
