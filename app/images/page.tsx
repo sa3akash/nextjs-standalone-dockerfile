@@ -10,11 +10,7 @@ export default function Home() {
 
   useEffect(()=>{
     startTransition(async()=>{
-      const res = await fetch(`https://jsonplaceholder.typicode.com/photos?_start=1&_limit=10`, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
+      const res = await fetch(`api/images`)
       const dataUser = await res.json()
       setUsers(dataUser)
     })
