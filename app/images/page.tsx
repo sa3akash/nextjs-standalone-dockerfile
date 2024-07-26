@@ -12,7 +12,7 @@ export default function Home() {
     startTransition(async()=>{
       const res = await fetch(`api/images`)
       const dataUser = await res.json()
-      setUsers(dataUser)
+      setUsers(dataUser?.data)
     })
   },[])
  
