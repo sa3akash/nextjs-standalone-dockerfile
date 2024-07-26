@@ -16,7 +16,7 @@ export default function Home() {
         },
       })
       const dataUser = await res.json()
-      setUsers(dataUser.images)
+      setUsers(dataUser)
     })
   },[])
  
