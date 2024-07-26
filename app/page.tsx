@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
@@ -15,6 +16,9 @@ export default function Home() {
         </Link>
       </div>
       <h1 className="text-7xl">Hello World!</h1>
+      <div>
+        <Image src="/icon.webp" width={100} height={100} alt="icon" />
+      </div>
     </main>
   );
 }
