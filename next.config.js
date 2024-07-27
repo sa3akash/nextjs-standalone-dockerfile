@@ -1,11 +1,25 @@
 module.exports = {
-  output: 'standalone',
-    images: {
-        remotePatterns: [
+  output: "standalone",
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
+      },
+    ],
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
           {
-            protocol: 'https',
-            hostname: 'via.placeholder.com',
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
           },
         ],
       },
-}
+    ];
+  },
+};
