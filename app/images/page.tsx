@@ -30,7 +30,7 @@ export default function Home() {
         {isPending && <p>Loading...</p>}
         {!isPending && users?.map((item:{url:string},index)=>(
           <div key={index}>
-            <Image width={500} height={500} src={item.url} alt="image" />
+            <Image width={500} height={500} src={item.url} alt="image" priority />
           </div>
         ))}
       </div>

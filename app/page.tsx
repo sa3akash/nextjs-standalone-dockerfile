@@ -5,19 +5,19 @@ export default function Home() {
   return (
     <main className="flex min-h-screen w-full items-center justify-center flex-col gap-20">
       <div className="flex gap-3 items-center">
-        <Link href="/posts" className="p-2 bg-gray-400">
+        <Link href="/posts" className="p-2 bg-gray-400" prefetch>
           Posts
         </Link>
-        <Link href="/users" className="p-2 bg-gray-400">
+        <Link href="/users" className="p-2 bg-gray-400" prefetch>
           Users
         </Link>
-        <Link href="/images" className="p-2 bg-gray-400">
+        <Link href="/images" className="p-2 bg-gray-400" prefetch>
           Images
         </Link>
       </div>
       <h1 className="text-7xl">Hello World!</h1>
       <div>
-        <Image src="/icon.webp" width={100} height={100} alt="icon" />
+        <Image src="/icon.webp" width={100} height={100} alt="icon" priority />
       </div>
     </main>
   );
