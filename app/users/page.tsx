@@ -24,7 +24,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen w-full items-center justify-center flex-col gap-20">
-      <div>
+      <div className='p-20'>
         <h1>Users</h1>
         {isPending && <p>Loading...</p>}
         {!isPending && JSON.stringify(users)}
