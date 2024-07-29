@@ -5,10 +5,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app  
 COPY package*.json ./  
 RUN npm ci  
-RUN npm install sharp  
-
-# Install PM2 here  
-RUN npm install -g pm2  
+RUN npm install sharp
 
 FROM node:20-alpine AS builder  
 WORKDIR /app  
@@ -34,4 +31,4 @@ EXPOSE 3001
 ENV PORT 3001  
 
 # Run the application with PM2, specifying server.js and instances  
-CMD ["pm2", "start", "server.js", "-i", "0"]
+CMD [ "node", "server.js" ]
