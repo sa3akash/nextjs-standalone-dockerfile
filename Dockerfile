@@ -34,4 +34,4 @@ EXPOSE 3001
 ENV PORT 3001  
 
 # Run the application with PM2, specifying server.js and instances  
-CMD ["pm2-runtime", "start", "server.js", "-i", "0"]
+CMD ["pm2", "start", "server.js", "-i", "0"]
